@@ -35,6 +35,21 @@ def SaveContacts():
     with open('prog1-10-0810/contacts.json', 'w', encoding='UTF8') as file:
         contacts_dict = {'contacts_list': contacts}
         json.dump(contacts_dict, file, indent=4)
+        
+def DeleteContact():
+    name = input('Enter name: ')
+    found = False
+
+    for contact in contacts:
+        if contact['name'] == name:
+            contacts.remove(contact)
+            found = True
+            break
+
+    if found:
+        print(f"Contact {name} has been deleted.")
+    else:
+        print(f"Contact {name} not found.")
 
 LoadContacts()
 while(True):
